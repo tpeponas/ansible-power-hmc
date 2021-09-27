@@ -677,8 +677,14 @@ def create_partition(module, params):
     system_name = params['system_name']
     vm_name = params['vm_name']
     proc = str(params['proc'] or 2)
+    min_proc = str(params['min_proc'] or 1)
+    max_proc = str(params['max_proc'] or proc)
     mem = str(params['mem'] or 2048)
+    min_mem = str(param['min_mem'] or 2048)
+    max_mem = str(param['max_mem'] or mem)
     proc_unit = params['proc_unit']
+    min_proc_unit = params['min_proc_unit'] or 0.1
+    max_proc_unit = params['max_proc_unit'] or proc_unit
     os_type = params['os_type']
     all_resources = params['all_resources']
     max_virtual_slots = str(params['max_virtual_slots'] or 20)
@@ -784,7 +790,20 @@ def create_partition(module, params):
         config_dict['mem'] = mem
         config_dict['max_virtual_slots'] = max_virtual_slots
 
-        # Tagged IO
+        # Check min / max proc
+        if (min_mem > mem):
+            raise Error("Minimum memory is greater than max memory")
+        if (max_mem < mem):
+            raise Error("Memory is greater than max memory")
+
+        config_dict['min_mem']=min_mem
+        config_dict['max_mem']=max_mem
+        config_dict['min_proc']=min_proc
+        config_dict['max_proc']=max_proc
+        config_dict['min_proc_unit']=min_proc_unit
+        config_dict['max_proc_unit']=max_proc_unit
+
+        # Taggedio
         if os_type == 'ibmi':
             add_taggedIO_details(temporary_temp_dom)
 
@@ -1186,7 +1205,13 @@ def run_module():
         vm_name=dict(type='str', required=True),
         proc=dict(type='int'),
         proc_unit=dict(type='float'),
+        min_proc=dict(type='int'),
+        max_proc=dict(type='int'),
+        min_proc_unit=dict(type='float'),
+        max_proc_unit=dict(type='float'),
         mem=dict(type='int'),
+        min_mem=dict(type='int'),
+        max_mem=dict(type='int'),
         os_type=dict(type='str', choices=['aix', 'linux', 'aix_linux', 'ibmi']),
         volume_config=dict(type='dict',
                            options=dict(
