@@ -572,10 +572,10 @@ class HmcRestClient:
                 <maxVirtualProcessors kxe="false" kb="CUD">{5}</maxVirtualProcessors>
                 </sharedProcessorConfiguration>'''.format(config_dict['proc_unit'],
                                                           config_dict['proc'],
-                                                          config['min_proc_unit'],
-                                                          config['max_proc_unit'],
-                                                          config['min_proc'],
-                                                          config['max_proc'])
+                                                          config_dict['min_proc_unit'],
+                                                          config_dict['max_proc_unit'],
+                                                          config_dict['min_proc'],
+                                                          config_dict['max_proc'])
 
             shared_config_tag = template_xml.xpath("//sharedProcessorConfiguration")[0]
             if shared_config_tag:

@@ -680,8 +680,8 @@ def create_partition(module, params):
     min_proc = str(params['min_proc'] or 1)
     max_proc = str(params['max_proc'] or proc)
     mem = str(params['mem'] or 2048)
-    min_mem = str(param['min_mem'] or 2048)
-    max_mem = str(param['max_mem'] or mem)
+    min_mem = str(params['min_mem'] or 2048)
+    max_mem = str(params['max_mem'] or mem)
     proc_unit = params['proc_unit']
     min_proc_unit = params['min_proc_unit'] or 0.1
     max_proc_unit = params['max_proc_unit'] or proc_unit
