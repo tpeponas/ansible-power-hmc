@@ -74,14 +74,44 @@ options:
               shared processor setting.
             - Default value is 2. This will not work during shared processor setting.
         type: int
+    min_proc:
+        description:
+            - The number of min dedicated processors to create a partition
+            - Default value is 1
+        type: int
+    max_proc:
+        description:
+            - The number of max dedicated processors to create a partition
+            - If the user doesn't provide this options, the values of proc options will be used
+        type: int
     proc_unit:
         description:
             - The number of shared processing units to create a partition.
+        type: float
+    min_proc_unit:
+        description:
+            - The number of shared min processing units to create a partition
+            - Default value is 2048 MB
+        type: float
+    max_proc_unit:
+        description:
+            - The number of shared max processing units to create a partition
+            - If the user doesn't provide this options, the values of proc_unit options will be used 
         type: float
     mem:
         description:
             - The value of dedicated memory value in megabytes to create a partition.
             - Default value is 2048 MB.
+        type: int
+    min_mem:
+        description:
+            - The value of minimum dedicated memory in megabytes to create a partition
+            - Default value is 2048 MB 
+        type: int
+    max_mem:
+        description:
+            - The value of minimum dedicated memory in megabytes to create a partition
+            - If the user doesn't provide this options, the values of mem options will be used
         type: int
     os_type:
         description:
