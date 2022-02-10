@@ -78,10 +78,21 @@ The following demo illustrate the use case of creating a partition with memory a
 power_system
 ------------
 
-poweroff, modify and poweron power system
+Poweroff, Modify and Power on power system
 """""""""""""""""""""""""""""""""""""""""
 
 The following demo illustrates the use case of listing down power system details and to modify configuration changes like name, poweroff policy, poweron lpar policy and then modify system resources like memory region size, system huge pages poweroff the power system, once modified poweron power system.
 
 .. figure:: ../images/demo_poweroff_and_modify_system_settings.gif
+   :alt:
+   
+vios
+----
+
+Create and Install vios then accept license
+"""""""""""""""""""""""""""""""""""""""""""
+
+The following demo illustrates the use case of creating VIOS partition with user provided profile name and ioslots settings and then installing VIOS on newly created VIOS partition from user provided NIM server details. After successful installation accept the VIOS license.
+
+.. figure:: ../images/demo_create_and_install_vios.gif
    :alt:
